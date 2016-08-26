@@ -259,7 +259,7 @@ class Builder extends BaseBuilder
             $results = iterator_to_array($this->collection->aggregate($pipeline, $options));
 
             // Return results
-            return $results;
+            return collect($results);
         }
 
         // Distinct query
@@ -274,7 +274,7 @@ class Builder extends BaseBuilder
                 $result = $this->collection->distinct($column);
             }
 
-            return $result;
+            return collect($result);
         }
 
         // Normal query
@@ -317,7 +317,7 @@ class Builder extends BaseBuilder
             $cursor = $this->collection->find($wheres, $options);
 
             // Return results as an array with numeric keys
-            return iterator_to_array($cursor, false);
+            return collect(iterator_to_array($cursor, false));
         }
     }
 
